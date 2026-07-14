@@ -1531,7 +1531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4130b07cf28bb6245a97db44150a5ab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  standing: 0
+  Standing: 0
   M_Moneymanager: {fileID: 954633421}
 --- !u!4 &985481723
 Transform:
@@ -1560,7 +1560,7 @@ GameObject:
   - component: {fileID: 1021152188}
   - component: {fileID: 1021152187}
   m_Layer: 5
-  m_Name: current bet
+  m_Name: Current Bet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

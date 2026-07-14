@@ -8,8 +8,8 @@ public class CallAndStand : MonoBehaviour
     {
         if (gameObject.CompareTag("Stand"))
         {
-            m_Card_script.standing = true;
-            m_Card_script.stand();
+            m_Card_script.Standing = true;
+            m_Card_script.Stand();
         }
         else if (gameObject.CompareTag("Call"))
         {
