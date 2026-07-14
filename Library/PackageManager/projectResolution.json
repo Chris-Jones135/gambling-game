@@ -1,18 +1,18 @@
 {
   "context": {
-    "projectPath": "C:/Users/h010783p/Documents/GitHub/gambling-game/Packages",
+    "projectPath": "C:/Users/chris/Documents/GitHub/gambling-game/Packages",
     "unityVersion": "6000.1.17f1"
   },
   "inputs": [
-    "C:\\Users\\h010783p\\Documents\\GitHub\\gambling-game\\Packages\\manifest.json",
-    "C:\\Users\\h010783p\\Documents\\GitHub\\gambling-game\\Packages\\packages-lock.json",
+    "C:\\Users\\chris\\Documents\\GitHub\\gambling-game\\Packages\\manifest.json",
+    "C:\\Users\\chris\\Documents\\GitHub\\gambling-game\\Packages\\packages-lock.json",
     "C:\\Program Files\\Unity\\Hub\\Editor\\6000.1.17f1\\Editor\\Data\\Resources\\PackageManager\\BuiltInPackages\\BuiltInPackagesCombined.sha1"
   ],
   "outputs": {
     "com.unity.multiplayer.center@1.0.0": {
       "name": "com.unity.multiplayer.center",
       "displayName": "Multiplayer Center",
-      "resolvedPath": "C:\\Users\\h010783p\\Documents\\GitHub\\gambling-game\\Library\\PackageCache\\com.unity.multiplayer.center@f3fb577b3546",
+      "resolvedPath": "C:\\Users\\chris\\Documents\\GitHub\\gambling-game\\Library\\PackageCache\\com.unity.multiplayer.center@f3fb577b3546",
       "fingerprint": "f3fb577b3546594b97b8cc34307cd621f60f1c73",
       "editorCompatibility": "6000.0.0a1",
       "version": "1.0.0",
@@ -22,7 +22,7 @@
     "com.unity.ugui@2.0.0": {
       "name": "com.unity.ugui",
       "displayName": "Unity UI",
-      "resolvedPath": "C:\\Users\\h010783p\\Documents\\GitHub\\gambling-game\\Library\\PackageCache\\com.unity.ugui@5d81960b7e3f",
+      "resolvedPath": "C:\\Users\\chris\\Documents\\GitHub\\gambling-game\\Library\\PackageCache\\com.unity.ugui@5d81960b7e3f",
       "fingerprint": "5d81960b7e3f4353bc11083e6a7f97b720d4f600",
       "editorCompatibility": "2019.2.0a1",
       "version": "2.0.0",
