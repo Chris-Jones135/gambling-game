@@ -10,12 +10,12 @@ public class Card_script : MonoBehaviour
     public MoneyManager M_Moneymanager;
 
     // creates a blank hand for the player with 15 spaces as that is the max hand available without going over 21
-    private string[] Cardsinhand = { "N/A", "N/A", "N/A", "N/A", "N/A"};
+    public string[] Cardsinhand = { "N/A", "N/A", "N/A", "N/A", "N/A"};
     // variable which holds current hand value
-    private int CurrentScore;
+    public int CurrentScore;
     // this does the same as the player just for the dealer
-    private string[] DealerCardsinhand = { "N/A", "N/A", "N/A", "N/A", "N/A"};
-    private int DealerCurrentScore;
+    public string[] DealerCardsinhand = { "N/A", "N/A", "N/A", "N/A", "N/A"};
+    public int DealerCurrentScore;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
 

@@ -3,16 +3,20 @@ using UnityEngine.UI;
 
 public class MoneyManager : MonoBehaviour
 {
+
+    
     [SerializeField] private int maxChips;
     public int remainingChips;
     public int playersChips;
     public int bet;
+    public bool Inven;
     public TMPro.TextMeshProUGUI betAmount;
     public GameObject Call;
     public GameObject Stand;
     public GameObject Standby_Call;
     public GameObject Standby_Stand;
     public GameObject Bet_Panel;
+    public GameObject Inven_Panel;
     public Card_script m_Card_script;
 
 
@@ -24,9 +28,8 @@ public class MoneyManager : MonoBehaviour
         Standby_Call.SetActive(true);
         Standby_Stand.SetActive(true);
         Bet_Panel.SetActive(true);
+        Inven_Panel.SetActive(false);
     }
-
-    // Update is called once per frame
 
     public void Bet()
     {
@@ -41,6 +44,8 @@ public class MoneyManager : MonoBehaviour
             Standby_Call.SetActive(false);
             Standby_Stand.SetActive(false);
             Bet_Panel.SetActive(false);
+            Inven_Panel.SetActive(true);
+            Inven = true;
             m_Card_script.start();
         }
 
@@ -66,6 +71,7 @@ public class MoneyManager : MonoBehaviour
         }
 
     }
+
     void Update()
     {
         betAmount.text = "" + bet;
