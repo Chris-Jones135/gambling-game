@@ -15,10 +15,16 @@ public class Card_script : MonoBehaviour
 
     // creates a blank hand for the player with 15 spaces as that is the max hand available without going over 21
     public string[] Cardsinhand = { "N/A", "N/A", "N/A", "N/A", "N/A"};
+    //creates a copy of just the scores in the hand for items later.
+    public int[] HandValues = { 0, 0, 0, 0, 0 };
+
     // variable which holds current hand value
     public int CurrentScore;
     // this does the same as the player just for the dealer
     public string[] DealerCardsinhand = { "N/A", "N/A", "N/A", "N/A", "N/A"};
+
+    public int[] DealerHandValues = { 0, 0, 0, 0, 0 };
+
     public int DealerCurrentScore;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -28,17 +34,17 @@ public class Card_script : MonoBehaviour
     public void start()
     {
         //WHY THE FUCK IS THIS LIKE THIS, sets up Scores for both the dealer and the player, and tells the player what Cards the player has and the first Card in the dealers hand
-        CurrentScore += CurrentScore = Cardmaker(Cardsinhand);
-        CurrentScore += CurrentScore = Cardmaker(Cardsinhand);
+        CurrentScore += CurrentScore = Cardmaker(Cardsinhand, HandValues);
+        CurrentScore += CurrentScore = Cardmaker(Cardsinhand, HandValues);
         //done twice due to looping in the function not working.
-        DealerCurrentScore += DealerCurrentScore = Cardmaker(DealerCardsinhand);
-        DealerCurrentScore += DealerCurrentScore = Cardmaker(DealerCardsinhand);
+        DealerCurrentScore += DealerCurrentScore = Cardmaker(DealerCardsinhand, DealerHandValues);
+        DealerCurrentScore += DealerCurrentScore = Cardmaker(DealerCardsinhand, DealerHandValues);
         Debug.Log("you have " + Cardsinhand[0] + " " + Cardsinhand[1] + " " + Cardsinhand[2] + " " + Cardsinhand[3] + " " + Cardsinhand[4]);
         Debug.Log(CurrentScore);
         Debug.Log("the dealer has a " + DealerCardsinhand[0]);
     }
 
-    int Cardmaker(string[] HandCard)
+    int Cardmaker(string[] HandCard, int[] HandValue)
     {
         int Score = 0;
 
@@ -121,11 +127,18 @@ public class Card_script : MonoBehaviour
         // go my chud i, loops through hand to diaplay it fully for the player
         for (int i = 0; i < 5; i++)
         {
+            if (HandValue[i] == 0)
+            {
+                HandValue[i] = Score;
+            }
+
             if (HandCard[i] == "N/A")
             {
                 HandCard[i] = CurrentCard;
                 i = 5;
             }
+
+            
         }
 
         if (CurrentScore == 21)
@@ -135,7 +148,9 @@ public class Card_script : MonoBehaviour
             for (int i = 0; i < 5; i++)
             {
                 Cardsinhand[i] = "N/A";
+                HandValues[i] = 0;
                 DealerCardsinhand[i] = "N/A";
+                DealerHandValues[i] = 0;
                 CurrentScore = 0;
                 DealerCurrentScore = 0;
                 AceReduced = false;
@@ -156,7 +171,7 @@ public class Card_script : MonoBehaviour
         //checks for all losing conditions if none are met gives the player a new card
         if (Cardsinhand[4] == "N/A" && CurrentScore < 21 && Standing == false)
         {
-            CurrentScore += CurrentScore = Cardmaker(Cardsinhand);
+            CurrentScore += CurrentScore = Cardmaker(Cardsinhand, HandValues);
         }
 
         // checks list for an ace in hand as if there is an ace it can change it to low ace.
@@ -172,13 +187,16 @@ public class Card_script : MonoBehaviour
         Debug.Log("you have " + Cardsinhand[0] + " " + Cardsinhand[1] + " " + Cardsinhand[2] + " " + Cardsinhand[3] + " " + Cardsinhand[4]);
         Debug.Log(CurrentScore);
 
+        //checking win loss conditions 
         if (CurrentScore > 21)
         {
             Debug.Log("you have busted and failed your game");
             for (int i = 0; i < 5; i++)
             {
                 Cardsinhand[i] = "N/A";
+                HandValues[i] = 0;
                 DealerCardsinhand[i] = "N/A";
+                DealerHandValues[i] = 0;
                 CurrentScore = 0;
                 DealerCurrentScore = 0;
                 AceReduced = false;
@@ -195,7 +213,9 @@ public class Card_script : MonoBehaviour
             for (int i = 0; i < 5; i++)
             {
                 Cardsinhand[i] = "N/A";
+                HandValues[i] = 0;
                 DealerCardsinhand[i] = "N/A";
+                DealerHandValues[i] = 0;
                 CurrentScore = 0;
                 DealerCurrentScore = 0;
                 AceReduced = false;
@@ -212,9 +232,27 @@ public class Card_script : MonoBehaviour
         AceReduced = false;
         Debug.Log(DealerCardsinhand[0] + " " + DealerCardsinhand[1]);
 
+        if (CurrentScore > 21)
+        {
+            Debug.Log("you lose");
+            for (int i = 0; i < 5; i++)
+            {
+                Cardsinhand[i] = "N/A";
+                HandValues[i] = 0;
+                DealerCardsinhand[i] = "N/A";
+                DealerHandValues[i] = 0;
+                CurrentScore = 0;
+                DealerCurrentScore = 0;
+                AceReduced = false;
+                Standing = false;
+            }
+            M_Moneymanager.playersChips -= M_Moneymanager.bet;
+            M_Moneymanager.Start();
+        }
+
         if (DealerCurrentScore < 16)
         {
-            DealerCurrentScore += DealerCurrentScore = Cardmaker(DealerCardsinhand);
+            DealerCurrentScore += DealerCurrentScore = Cardmaker(DealerCardsinhand, DealerHandValues);
             Debug.Log("the dealers hand is " + DealerCardsinhand[0] + " " + DealerCardsinhand[1] + " " + DealerCardsinhand[2] + " " + DealerCardsinhand[3] + " " + DealerCardsinhand[4]);
             Debug.Log("Dealer Score: " + DealerCurrentScore);
             // checks list for an ace in dealers hand as if there is an ace it can change it to low ace.
@@ -236,7 +274,9 @@ public class Card_script : MonoBehaviour
                 for (int i = 0; i < 5; i++)
                 {
                     Cardsinhand[i] = "N/A";
+                    HandValues[i] = 0;
                     DealerCardsinhand[i] = "N/A";
+                    DealerHandValues[i] = 0;
                     CurrentScore = 0;
                     DealerCurrentScore = 0;
                     AceReduced = false;
@@ -252,7 +292,9 @@ public class Card_script : MonoBehaviour
                 for (int i = 0; i < 5; i++)
                 {
                     Cardsinhand[i] = "N/A";
+                    HandValues[i] = 0;
                     DealerCardsinhand[i] = "N/A";
+                    DealerHandValues[i] = 0;
                     CurrentScore = 0;
                     DealerCurrentScore = 0;
                     AceReduced = false;
@@ -268,7 +310,9 @@ public class Card_script : MonoBehaviour
                 for (int i = 0; i < 5; i++)
                 {
                     Cardsinhand[i] = "N/A";
+                    HandValues[i] = 0;
                     DealerCardsinhand[i] = "N/A";
+                    DealerHandValues[i] = 0;
                     CurrentScore = 0;
                     DealerCurrentScore = 0;
                     AceReduced = false;

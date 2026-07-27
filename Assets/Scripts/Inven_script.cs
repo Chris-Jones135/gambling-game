@@ -6,7 +6,7 @@ public class Inven_script : MonoBehaviour
     public Items_script m_Items_Scipt;
 
     //sets the starting inventory size to 5 slots
-    [SerializeField] private int[] Inven = { 0, 999, 999, 999, 999 };
+    [SerializeField] private int[] Inven = { 4, 999, 999, 999, 999 };
     
     //gets the panel and buttons for the inventory ui
     public GameObject Inven_Panel;
@@ -19,7 +19,7 @@ public class Inven_script : MonoBehaviour
 
     void Update()
     {
-        
+        //switch case for using items
         switch (Item)
         {
             case 0:
@@ -34,6 +34,10 @@ public class Inven_script : MonoBehaviour
             case 3:
                 m_Items_Scipt.YouStupid();
                 break;
+            case 4:
+                m_Items_Scipt.stickyhand();
+                break;
+
 
 
         }
