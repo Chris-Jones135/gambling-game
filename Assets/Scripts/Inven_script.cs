@@ -97,16 +97,4 @@ public class InventoryScript : MonoBehaviour
             Inven[4] = "N/A";
         }
     }
-
-    //string ItemAdder(string[] Item)
-    //{
-
-    //}
-
-    // Update is called once per frame
-
-    void Update()
-    {
-
-    }
 }
