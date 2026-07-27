@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -100,9 +100,9 @@ TextureImporter:
       name: Charlie_Kirk_(53952923573)_(headshot_cropped)_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 25
         y: 0
-        width: 1222
+        width: 1205
         height: 1689
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -112,8 +112,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc0700cfe2f7e4b4db985ddf80554e95
-      internalID: -87991421
+      spriteID: 3b03aef04ca9f17469b2fbc9bec8442d
+      internalID: -57014330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Charlie_Kirk_(53952923573)_(headshot_cropped)_1
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 0
+        width: 1205
+        height: 1689
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: daac02810c848cb45a297bdf6f241f56
+      internalID: 2080927846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Charlie_Kirk_(53952923573)_(headshot_cropped)_2
+      rect:
+        serializedVersion: 2
+        x: 2435
+        y: 0
+        width: 1205
+        height: 1689
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04584f7e53af7bb42a5aab4af21c5367
+      internalID: -1122284520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Charlie_Kirk_(53952923573)_(headshot_cropped)_3
+      rect:
+        serializedVersion: 2
+        x: 3640
+        y: 0
+        width: 1205
+        height: 1689
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a75d2660e7856d439827ecb206363b1
+      internalID: 1497972170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Charlie_Kirk_(53952923573)_(headshot_cropped)_4
+      rect:
+        serializedVersion: 2
+        x: 4845
+        y: 0
+        width: 1205
+        height: 1689
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbec31222a5d2f94fb62853304dccd7f
+      internalID: 38776064
       vertices: []
       indices: 
       edges: []
@@ -122,7 +210,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f1019dd82a0c355418be7adb56b02141
+    spriteID: b07ac3bb0906c3243a3e5cf582e578e0
     internalID: 0
     vertices: []
     indices: 
@@ -130,9 +218,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":5.0,"y":1.0},"gridSpriteSize":{"x":1205.0,"y":1689.0},"gridSpriteOffset":{"x":25.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Charlie_Kirk_(53952923573)_(headshot_cropped)_0: -87991421
+      Charlie_Kirk_(53952923573)_(headshot_cropped)_0: -57014330
+      Charlie_Kirk_(53952923573)_(headshot_cropped)_1: 2080927846
+      Charlie_Kirk_(53952923573)_(headshot_cropped)_2: -1122284520
+      Charlie_Kirk_(53952923573)_(headshot_cropped)_3: 1497972170
+      Charlie_Kirk_(53952923573)_(headshot_cropped)_4: 38776064
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
