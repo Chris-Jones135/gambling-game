@@ -1,12 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InventoryScript : MonoBehaviour
+public class Inven_script : MonoBehaviour
 {
-    public Card_script m_Card_script;
+    public Items_script m_Items_Scipt;
 
     //sets the starting inventory size to 5 slots
-    [SerializeField] private string[] Inven = { "Marker", "N/A", "N/A", "N/A", "N/A" };
+    [SerializeField] private int[] Inven = { 0, 999, 999, 999, 999 };
     
     //gets the panel and buttons for the inventory ui
     public GameObject Inven_Panel;
@@ -15,86 +15,94 @@ public class InventoryScript : MonoBehaviour
     public GameObject Item_3;
     public GameObject Item_4;
     public GameObject Item_5;
+    public int Item = 99999;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Update()
     {
+        
+        switch (Item)
+        {
+            case 0:
+                m_Items_Scipt.Marker();
+                break;
+            case 1:
+                m_Items_Scipt.CheepPlasticCrown();
+                break;
+            case 2:
+                m_Items_Scipt.beer();
+                break;
+            case 3:
+                m_Items_Scipt.YouStupid();
+                break;
+
+
+        }
 
     }
 
     //item buttons checking when pressed
     public void UseItem1()
     {
-        if (Inven[0] == "N/A")
+        if (Inven[0] == 999)
         {
-            Debug.Log("BUY SOMETHING FAG");
+            Debug.Log("buy something fag");
         }
-        else if (Inven[0] == "Marker")
+        else
         {
-            m_Card_script.CurrentScore += 1;
-            Debug.Log("you used the marker on a card in you hand");
-            Debug.Log(m_Card_script.CurrentScore);
-            Inven[0] = "N/A";
+            Item = Inven[0];
+            Inven[0] = 999;
         }
     }
 
     public void UseItem2()
     {
-        if (Inven[1] == "N/A")
+        if (Inven[1] == 999)
         {
-            Debug.Log("BUY SOMETHING FAG");
+            Debug.Log("buy something fag");
         }
-        else if (Inven[1] == "Marker")
+        else
         {
-            m_Card_script.CurrentScore += 1;
-            Debug.Log("you used the marker on a card in you hand");
-            Debug.Log(m_Card_script.CurrentScore);
-            Inven[1] = "N/A";
+            Item = Inven[1];
+            Inven[1] = 999;
         }
     }
 
     public void UseItem3()
     {
-        if (Inven[2] == "N/A")
+        if (Inven[2] == 999)
         {
-            Debug.Log("BUY SOMETHING FAG");
+            Debug.Log("buy something fag");
         }
-        else if (Inven[2] == "Marker")
+        else
         {
-            m_Card_script.CurrentScore += 1;
-            Debug.Log("you used the marker on a card in you hand");
-            Debug.Log(m_Card_script.CurrentScore);
-            Inven[2] = "N/A";
+            Item = Inven[2];
+            Inven[2] = 999;
         }
     }
 
     public void UseItem4()
     {
-        if (Inven[3] == "N/A")
+        if (Inven[3] == 999)
         {
-            Debug.Log("BUY SOMETHING FAG");
+            Debug.Log("buy something fag");
         }
-        else if (Inven[3] == "Marker")
+        else
         {
-            m_Card_script.CurrentScore += 1;
-            Debug.Log("you used the marker on a card in you hand");
-            Debug.Log(m_Card_script.CurrentScore);
-            Inven[3] = "N/A";
+            Item = Inven[3];
+            Inven[3] = 999;
         }
     }
 
     public void UseItem5()
     {
-        if (Inven[4] == "N/A")
+        if (Inven[4] == 999)
         {
-            Debug.Log("BUY SOMETHING FAG");
+            Debug.Log("buy something fag");
         }
-        else if (Inven[4] == "Marker")
+        else
         {
-            m_Card_script.CurrentScore += 1;
-            Debug.Log("you used the marker on a card in you hand");
-            Debug.Log(m_Card_script.CurrentScore);
-            Inven[4] = "N/A";
+            Item = Inven[4];
+            Inven[4] = 999;
         }
     }
 }

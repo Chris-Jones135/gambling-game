@@ -5,6 +5,10 @@ public class Card_script : MonoBehaviour
     private string CardSuit;
     private string CardValue;
     private string CurrentCard;
+    public int PlasticJack = 10;
+    public int PlasticQueen = 10;
+    public int PlasticKing = 10;
+    public int NewCard = 13;
     private bool AceReduced = false;
     public bool Standing = false;
     public MoneyManager M_Moneymanager;
@@ -39,7 +43,7 @@ public class Card_script : MonoBehaviour
         int Score = 0;
 
         // random variable which allows for the Card value to be chosen between 1 and 13 if 1 the Card is an ace
-        int Card = Random.Range(1, 13);
+        int Card = Random.Range(1, NewCard);
 
         // randomised the suit of the Card so that it isnt just numbers
         int Suit = Random.Range(0, 3);
@@ -86,17 +90,22 @@ public class Card_script : MonoBehaviour
 
             case 11:
                 CardValue = "Jack";
-                Score += 10;
+                Score += PlasticJack;
                 break;
 
             case 12:
                 CardValue = "Queen";
-                 Score += 10;
+                 Score += PlasticQueen;
                  break;
 
             case 13:
                 CardValue = "King";
-                Score += 10;
+                Score += PlasticKing;
+                break;
+
+            case 14:
+                CardValue = "You Stupid";
+                Score += 21;
                 break;
 
             default:
