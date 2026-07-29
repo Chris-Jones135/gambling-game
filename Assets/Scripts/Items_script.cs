@@ -19,10 +19,10 @@ public class Items_script : MonoBehaviour
     //one card value increased by 1
     public void Marker()
     {
-        m_Card_Script.CurrentScore += 1;
+        /*m_Card_Script.CurrentScore += 1;
         Debug.Log("you used the marker on a card in you hand");
         Debug.Log(m_Card_Script.CurrentScore);
-        m_Inven_Script.Item = 9999;
+        m_Inven_Script.Item = 9999;*/
     }
 
     //When you use a item that replaces a card in your hand
@@ -85,7 +85,7 @@ public class Items_script : MonoBehaviour
     //steal one of the dealers cards so he has one card and you have 3 (33% to miss)
     public void stickyhand()
     {
-        int Miss = Random.Range(0, 2);
+        /*int Miss = Random.Range(0, 2);
         if (Miss == 0)
         {
             for (int i = 0; i < 5; i++)
@@ -135,7 +135,7 @@ public class Items_script : MonoBehaviour
         {
             Debug.Log("Missed Mong");
             m_Inven_Script.Item = 9999;
-        }
+        }*/
     }
 
     //Allows you to permanently burn a card for that run
@@ -148,7 +148,7 @@ public class Items_script : MonoBehaviour
     public void firstcard()
     {
         Card_Panel.SetActive(false);
-        m_Card_Script.Cardsinhand[0] = "N/A";
+        //m_Card_Script.Cardsinhand[0] = "N/A";
 
     }
 }

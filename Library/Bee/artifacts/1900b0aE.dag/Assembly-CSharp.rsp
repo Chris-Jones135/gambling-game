@@ -381,6 +381,7 @@
 "Assets/Scripts/CardManager.cs"
 "Assets/Scripts/CardMovement.cs"
 "Assets/Scripts/Card_script.cs"
+"Assets/Scripts/Hand_Class.cs"
 "Assets/Scripts/Inven_script.cs"
 "Assets/Scripts/Items_script.cs"
 "Assets/Scripts/MoneyManager.cs"

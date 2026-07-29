@@ -5,9 +5,9 @@ public class MoneyManager : MonoBehaviour
 {
 
     
-    [SerializeField] private int maxChips;
-    public int remainingChips;
-    public int playersChips;
+    [SerializeField] private int MaxChips;
+    public int RemainingChips;
+    public int PlayerChips;
     public int bet;
     public bool Inven;
     public TMPro.TextMeshProUGUI betAmount;
@@ -46,19 +46,17 @@ public class MoneyManager : MonoBehaviour
             Bet_Panel.SetActive(false);
             Inven_Panel.SetActive(true);
             Inven = true;
-            m_Card_script.start();
+            m_Card_script.Setup();
         }
-
-            
     }
 
 
     public void BetUp(int scoreToAdd)
     {
         bet += scoreToAdd;
-        if (bet > playersChips)
+        if (bet > PlayerChips)
         {
-            bet = playersChips;
+            bet = PlayerChips;
         }
     }
 
@@ -75,6 +73,6 @@ public class MoneyManager : MonoBehaviour
     void Update()
     {
         betAmount.text = "" + bet;
-        remainingChips = maxChips - playersChips;
+        RemainingChips = MaxChips - PlayerChips;
     }
 }

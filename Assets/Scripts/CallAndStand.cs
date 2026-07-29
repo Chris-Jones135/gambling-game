@@ -13,10 +13,7 @@ public class CallAndStand : MonoBehaviour
         }
         else if (gameObject.CompareTag("Call"))
         {
-            m_Card_script.call();
+            m_Card_script.Call();
         }
-
     }
-
-
 }

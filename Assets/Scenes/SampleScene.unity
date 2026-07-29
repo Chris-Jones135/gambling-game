@@ -795,6 +795,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 296768643}
   m_CullTransparentMesh: 1
+--- !u!1 &297714658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 297714660}
+  - component: {fileID: 297714659}
+  m_Layer: 0
+  m_Name: DealerHandManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &297714659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297714658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e6c8b2cf9b483043b8d3151d3d626dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &297714660
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297714658}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.98627, y: 0, z: -2.09144}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -2634,9 +2678,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da167ebe226e7704c992f13c83e51afe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxChips: 1020
-  remainingChips: 1019
-  playersChips: 1
+  MaxChips: 1020
+  RemainingChips: 1019
+  PlayerChips: 1
   bet: 0
   Inven: 0
   betAmount: {fileID: 1021152187}
@@ -2697,22 +2741,8 @@ MonoBehaviour:
   NewCard: 13
   Standing: 0
   M_Moneymanager: {fileID: 954633421}
-  Cardsinhand:
-  - N/A
-  - N/A
-  - N/A
-  - N/A
-  - N/A
-  HandValues: 0000000000000000000000000000000000000000
-  CurrentScore: 0
-  DealerCardsinhand:
-  - N/A
-  - N/A
-  - N/A
-  - N/A
-  - N/A
-  DealerHandValues: 0000000000000000000000000000000000000000
-  DealerCurrentScore: 0
+  M_PlayerHand: {fileID: 1598765145}
+  M_DealerHand: {fileID: 297714659}
 --- !u!4 &985481723
 Transform:
   m_ObjectHideFlags: 0
@@ -3844,6 +3874,50 @@ Transform:
   - {fileID: 1038028145}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1598765144
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1598765146}
+  - component: {fileID: 1598765145}
+  m_Layer: 0
+  m_Name: PlayerHandManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1598765145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598765144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e6c8b2cf9b483043b8d3151d3d626dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1598765146
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598765144}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.98627, y: 0, z: -2.09144}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1765922460
 GameObject:
   m_ObjectHideFlags: 0
@@ -4883,3 +4957,5 @@ SceneRoots:
   - {fileID: 2014262646}
   - {fileID: 1953460865}
   - {fileID: 194360604}
+  - {fileID: 1598765146}
+  - {fileID: 297714660}
