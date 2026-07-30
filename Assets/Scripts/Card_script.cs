@@ -44,133 +44,92 @@ public class Card_script : MonoBehaviour
     {
         M_PlayerHand.ResetHand();
         M_DealerHand.ResetHand();
-    }
+    } // Resets the hands of the player and dealer for a new round
 
     public void Call()
     {
         int playerScore;
 
         Debug.Log("Calling");
-        M_PlayerHand.AddCard(roundDeck, roundCards);
+        M_PlayerHand.AddCard(roundDeck, roundCards); // Adds a new card to the player's hand
 
-        playerScore = M_PlayerHand.GetHandValue();
+        playerScore = M_PlayerHand.GetHandValue(); // Get the player's current score
 
-        Debug.Log("You have the cards:");
-        for (int i = 0; i < M_PlayerHand.GetHandSize(); i++)
-        {
-            Debug.Log(M_PlayerHand.GetHand(i));
-        }
-        Debug.Log("Your current score is: " + playerScore);
+        M_PlayerHand.PrintHand("Player"); // Prints the player's hand to the console
 
-        if (playerScore > 21)
-        {
-            Lose();
-        }
-
-        else if (playerScore == 21)
-        {
-            Debug.Log("NOWAY YOU GOT 21 |_(._.)_| (Absolute Blackjack) YOU ARE BIG WINNER!!!");
-            Win();
-        }
-
-        else if (M_PlayerHand.GetHandSize() == 5 && playerScore <= 21)
-        {
-            Debug.Log("You got 5 cards without going over 21. wowee");
-            Win();
-        }
+        PlayerCheck(playerScore); // Checks the player's score to see if drawing a new card has caused an automatic win or loss condition
     }
 
     public void Stand()
     {
-        int dealerScore = M_DealerHand.GetHandValue();
+        int dealerScore = M_DealerHand.GetHandValue(); // Get the dealer's current score
 
         Debug.Log("Standing");
 
-        Debug.Log("Dealer has the cards:");
-        for (int i = 0; i < M_DealerHand.GetHandSize(); i++)
-        {
-            Debug.Log(M_DealerHand.GetHand(i));
-        }
-        Debug.Log("Dealer's current score is: " + dealerScore);
+        M_DealerHand.PrintHand("Dealer"); // Prints the dealer's hand to the console
 
-        while (dealerScore < 16)
+        while (dealerScore < 16) // While the dealer's score is less than 16, they will continue to call for cards
         {
             Debug.Log("Dealer calls:");
-            M_DealerHand.AddCard(roundDeck, roundCards);
-            dealerScore = M_DealerHand.GetHandValue();
+            M_DealerHand.AddCard(roundDeck, roundCards); // Adds a new card to the dealer's hand
+            dealerScore = M_DealerHand.GetHandValue(); // Get the dealer's current score after adding a new card
 
-            Debug.Log("Dealer has the cards:");
-            for (int i = 0; i < M_DealerHand.GetHandSize(); i++)
-            {
-                Debug.Log(M_DealerHand.GetHand(i));
-            }
-            Debug.Log("Dealer's current score is: " + dealerScore);
+            M_DealerHand.PrintHand("Dealer"); // Prints the dealer's hand to the console
 
             if (dealerScore > 21)
             {
                 Win();
                 return;
-            }
+            } // Automatic win condition for if the dealer goes over 21
 
             else if (dealerScore == 21)
             {
                 Debug.Log("Dealer got 21, automatic loss. L + ratio + no chips + chud times");
                 Lose();
                 return;
-            }
-
-            else if (dealerScore == M_PlayerHand.GetHandValue())
-            {
-                Tie();
-                return;
-            }
+            } // Automatic loss condition for if the dealer gets 21`
 
             else if (dealerScore > M_PlayerHand.GetHandValue())
             {
                 Lose();
                 return;
-            }
-
-            else if (dealerScore < M_PlayerHand.GetHandValue())
-            {
-                Win();
-                return;
-            }
+            } // If the dealer's score ever overtakes the player's, the player loses
         }
 
         if (dealerScore > M_PlayerHand.GetHandValue())
         {
             Lose();
             return;
-        }
+        } // If the dealer's score is greater than the player's, the player loses (Condition for if no card is drawn)
 
         else if (dealerScore < M_PlayerHand.GetHandValue())
         {
             Win();
             return;
-        }
+        } // If the dealer's score is less than the player's after they no longer want to draw cards, the player wins
 
         else
         {
             Tie();
             return;
-        }
+        } // If the dealer's score is equal to the player's after they no longer want to draw cards, the game is a tie
     }
 
     public void Setup()
     {
-        roundDeck = deck;
-        roundCards = cardNames;
+        roundDeck = deck; // A deck of cards for the round, so the main deck doesnt get altered when cards are drawn
+        roundCards = cardNames; // The card names for the round, so the main card names dont get altered when cards are drawn
 
         for (int i = 0; i < 2; i++)
         {
             M_PlayerHand.AddCard(roundDeck, roundCards);
             M_DealerHand.AddCard(roundDeck, roundCards);
-        }
+        } // Gives the player and dealer 2 cards each at the start of the round
 
-        Debug.Log("You have the cards: " + M_PlayerHand.GetHand(0) + " and " + M_PlayerHand.GetHand(1));
-        Debug.Log("Your current score is: " + M_PlayerHand.GetHandValue());
-        Debug.Log("Dealer has the cards: " + M_DealerHand.GetHand(0) + " and a hidden card");
+        M_PlayerHand.PrintHand("Player"); // Prints the player's hand to the console
+        Debug.Log("Dealer has the cards: " + M_DealerHand.GetCard(0) + " and a hidden card"); // Outputs what would be visable to the player in a real game of blackjack, the dealer's second card is hidden until the player stands
+
+        PlayerCheck(M_PlayerHand.GetHandValue()); // Checks the player's score to see if they drew into a 21 immediately
     }
 
     public void Win()
@@ -182,7 +141,7 @@ public class Card_script : MonoBehaviour
         M_Moneymanager.bet *= 2;
         M_Moneymanager.PlayerChips += M_Moneymanager.bet;
         M_Moneymanager.Start();
-    }
+    } // Upon winning a round, player and dealer hands are reset, the player's bet is doubled and added to their chips, and the game is restarted
 
     public void Lose()
     {
@@ -192,7 +151,7 @@ public class Card_script : MonoBehaviour
 
         M_Moneymanager.PlayerChips -= M_Moneymanager.bet;
         M_Moneymanager.Start();
-    }
+    } // Upon losing a round, player and dealer hands are reset, the player's bet is subtracted from their chips, and the game is restarted
 
     public void Tie()
     {
@@ -201,5 +160,25 @@ public class Card_script : MonoBehaviour
         Reset();
 
         M_Moneymanager.Start();
+    } // Upon tying a round, player and dealer hands are reset, the player's chips remain the same, and the game is restarted
+
+    public void PlayerCheck(int playerScore)
+    {
+        if (playerScore > 21)
+        {
+            Lose();
+        } // Condition for if the player goes over 21, they lose
+
+        else if (playerScore == 21)
+        {
+            Debug.Log("NOWAY YOU GOT 21 |_(._.)_| (Absolute Blackjack) YOU ARE BIG WINNER!!!");
+            Win();
+        } // Automatic win condition for if the player gets 21
+
+        else if (M_PlayerHand.GetHandSize() == 5 && playerScore <= 21)
+        {
+            Debug.Log("You got 5 cards without going over 21. wowee");
+            Win();
+        } // Automatic win condition for if the player gets 5 cards without going over 21
     }
 }

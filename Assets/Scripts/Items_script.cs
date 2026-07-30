@@ -1,4 +1,6 @@
 using UnityEngine;
+using System;
+using System.Collections.Generic;
 
 public class Items_script : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class Items_script : MonoBehaviour
     int Drunk = 0;
     bool YSAdded = false;
 
+    System.Random random = new System.Random();
+
     void Start()
     {
         Card_Panel.SetActive(false);
@@ -19,10 +23,10 @@ public class Items_script : MonoBehaviour
     //one card value increased by 1
     public void Marker()
     {
-        /*m_Card_Script.CurrentScore += 1;
+        m_Card_Script.M_PlayerHand.CardRevalue(0,1); // Currently only for the first card in hand, can be very easily changed to work for any card in hand by adding a parameter to the function for the card index.
         Debug.Log("you used the marker on a card in you hand");
-        Debug.Log(m_Card_Script.CurrentScore);
-        m_Inven_Script.Item = 9999;*/
+        Debug.Log(m_Card_Script.M_PlayerHand.GetHandValue());
+        m_Inven_Script.Item = 9999;
     }
 
     //When you use a item that replaces a card in your hand
@@ -85,70 +89,36 @@ public class Items_script : MonoBehaviour
     //steal one of the dealers cards so he has one card and you have 3 (33% to miss)
     public void stickyhand()
     {
-        /*int Miss = Random.Range(0, 2);
-        if (Miss == 0)
-        {
-            for (int i = 0; i < 5; i++)
-            {
-                if (m_Card_Script.Cardsinhand[i] == "N/A")
-                {
-                    m_Card_Script.CurrentScore += m_Card_Script.DealerHandValues[0];
-                    m_Card_Script.Cardsinhand[i] = m_Card_Script.DealerCardsinhand[0];
-                    m_Card_Script.HandValues[i] = m_Card_Script.DealerHandValues[0];
-                    i = 5;
-                }
-            }
-            //take card one from dealer
-            m_Card_Script.DealerCardsinhand[0] = "N/A";
-            m_Card_Script.DealerCurrentScore -= m_Card_Script.DealerHandValues[0];
-            m_Card_Script.DealerHandValues[0] = 0;
-            Debug.Log("grabbed first card");
-            Debug.Log("you have " + m_Card_Script.Cardsinhand[0] + " " + m_Card_Script.Cardsinhand[1] + " " + m_Card_Script.Cardsinhand[2] + " " + m_Card_Script.Cardsinhand[3] + " " + m_Card_Script.Cardsinhand[4]);
-            Debug.Log(m_Card_Script.CurrentScore);
-            Debug.Log("the dealer has a " + m_Card_Script.DealerCardsinhand[0]);
-            m_Inven_Script.Item = 9999;
-        }
-        else if (Miss == 1)
-        {
-            for (int i = 0; i < 5; i++)
-            {
-                if (m_Card_Script.Cardsinhand[i] == "N/A")
-                {
-                    m_Card_Script.CurrentScore += m_Card_Script.DealerHandValues[1];
-                    m_Card_Script.Cardsinhand[i] = m_Card_Script.DealerCardsinhand[1];
-                    m_Card_Script.HandValues[i] = m_Card_Script.DealerHandValues[1];
-                    i = 5;
-                }
-            }
-            //take card two from dealer
-            m_Card_Script.DealerCardsinhand[1] = "N/A";
-            m_Card_Script.DealerCurrentScore -= m_Card_Script.DealerHandValues[1];
-            m_Card_Script.DealerHandValues[1] = 0;
-            Debug.Log("grabbed second card");
-            Debug.Log("you have " + m_Card_Script.Cardsinhand[0] + " " + m_Card_Script.Cardsinhand[1] + " " + m_Card_Script.Cardsinhand[2] + " " + m_Card_Script.Cardsinhand[3] + " " + m_Card_Script.Cardsinhand[4]);
-            Debug.Log(m_Card_Script.CurrentScore);
-            Debug.Log("the dealer has a " + m_Card_Script.DealerCardsinhand[0]);
+        int Miss = random.Next(0, 3); // Generates a random number between 0 and 2 (inclusive) for the miss chance
 
-            m_Inven_Script.Item = 9999;
-        }
-        else if (Miss == 2)
+        switch (Miss)
         {
-            Debug.Log("Missed Mong");
-            m_Inven_Script.Item = 9999;
-        }*/
+            case 2:
+                Debug.Log("Missed. L aim. You need this: https://store.steampowered.com/app/714010/Aimlabs/");
+                break;
+
+            default:
+                m_Card_Script.M_PlayerHand.AddCardToHand(m_Card_Script.M_DealerHand.GetCard(Miss), m_Card_Script.M_DealerHand.GetCardValue(Miss)); // Add the dealer's card to the player's hand
+                m_Card_Script.M_DealerHand.RemoveCard(Miss); // Remove the card from the dealer's hand
+
+                Debug.Log($"Grabbed card {Miss + 1} from the dealer. Big W");
+
+                m_Card_Script.M_PlayerHand.PrintHand("Player"); // Output the player's hand after adding the card
+                m_Card_Script.M_DealerHand.PrintHand("Dealer"); // Output the dealer's hand after the card has been removed
+
+                break;
+        }
     }
 
     //Allows you to permanently burn a card for that run
     public void Lighter()
     {
         Card_Panel.SetActive(true);
-
     }
 
     public void firstcard()
     {
         Card_Panel.SetActive(false);
-        //m_Card_Script.Cardsinhand[0] = "N/A";
-
+        m_Card_Script.M_PlayerHand.RemoveCard(0);
     }
 }

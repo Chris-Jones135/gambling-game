@@ -4455,7 +4455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Items_Scipt: {fileID: 1953460866}
-  Inven: 03000000e7030000e7030000e7030000e7030000
+  Inven: e7030000e7030000e7030000e703000004000000
   Inven_Panel: {fileID: 2077891000}
   Item_1: {fileID: 111768672}
   Item_2: {fileID: 675348729}
