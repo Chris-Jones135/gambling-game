@@ -120,6 +120,7 @@ public class Card_script : MonoBehaviour
         roundDeck = deck; // A deck of cards for the round, so the main deck doesnt get altered when cards are drawn
         roundCards = cardNames; // The card names for the round, so the main card names dont get altered when cards are drawn
 
+        //go my chud I
         for (int i = 0; i < 2; i++)
         {
             M_PlayerHand.AddCard(roundDeck, roundCards);
@@ -155,7 +156,7 @@ public class Card_script : MonoBehaviour
 
     public void Tie()
     {
-        Debug.Log("You tied, no chip for you");
+        Debug.Log("You tied, no chip for you, bwomp");
 
         Reset();
 
